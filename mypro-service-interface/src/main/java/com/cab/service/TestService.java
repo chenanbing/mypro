@@ -1,15 +1,11 @@
 package com.cab.service;
 
-import com.cab.bean.entity.domains.Domains;
-import com.cab.bean.view.TestBean;
-import com.cab.common.framework.exception.ServiceException;
-
+import com.cab.bean.entity.test.Test;
 /**
  * Created by admin on 2018/5/18.
  */
 public interface TestService {
 
-    public Domains test(int id);
+    public Test test(int id);
 
-    public void testException() throws ServiceException;
 }

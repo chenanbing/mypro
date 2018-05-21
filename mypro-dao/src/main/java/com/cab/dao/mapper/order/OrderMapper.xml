@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cab.dao.mapper.order.OrderMapper">
+  <resultMap id="BaseResultMap" type="com.cab.bean.entity.order.Order">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="box_num" jdbcType="INTEGER" property="boxNum" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="brand" jdbcType="VARCHAR" property="brand" />
+    <result column="specs" jdbcType="VARCHAR" property="specs" />
+    <result column="num" jdbcType="INTEGER" property="num" />
+    <result column="price" jdbcType="DECIMAL" property="price" />
+    <result column="total_price" jdbcType="DECIMAL" property="totalPrice" />
+    <result column="net_weight" jdbcType="VARCHAR" property="netWeight" />
+    <result column="gross_weight" jdbcType="VARCHAR" property="grossWeight" />
+    <result column="recipient_name" jdbcType="VARCHAR" property="recipientName" />
+    <result column="recipient_phone" jdbcType="VARCHAR" property="recipientPhone" />
+    <result column="recipient_address" jdbcType="VARCHAR" property="recipientAddress" />
+    <result column="recipient_id" jdbcType="VARCHAR" property="recipientId" />
+    <result column="order_num" jdbcType="VARCHAR" property="orderNum" />
+    <result column="express_num" jdbcType="VARCHAR" property="expressNum" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="status" jdbcType="SMALLINT" property="status" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, box_num, name, brand, specs, num, price, total_price, net_weight, gross_weight, 
+    recipient_name, recipient_phone, recipient_address, recipient_id, order_num, express_num, 
+    create_time, update_time, status
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_order
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_order
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cab.bean.entity.order.Order">
+    insert into t_order (id, box_num, name, 
+      brand, specs, num, 
+      price, total_price, net_weight, 
+      gross_weight, recipient_name, recipient_phone, 
+      recipient_address, recipient_id, order_num, 
+      express_num, create_time, update_time, 
+      status)
+    values (#{id,jdbcType=INTEGER}, #{boxNum,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
+      #{brand,jdbcType=VARCHAR}, #{specs,jdbcType=VARCHAR}, #{num,jdbcType=INTEGER}, 
+      #{price,jdbcType=DECIMAL}, #{totalPrice,jdbcType=DECIMAL}, #{netWeight,jdbcType=VARCHAR}, 
+      #{grossWeight,jdbcType=VARCHAR}, #{recipientName,jdbcType=VARCHAR}, #{recipientPhone,jdbcType=VARCHAR}, 
+      #{recipientAddress,jdbcType=VARCHAR}, #{recipientId,jdbcType=VARCHAR}, #{orderNum,jdbcType=VARCHAR}, 
+      #{expressNum,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{status,jdbcType=SMALLINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.cab.bean.entity.order.Order">
+    insert into t_order
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="boxNum != null">
+        box_num,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="brand != null">
+        brand,
+      </if>
+      <if test="specs != null">
+        specs,
+      </if>
+      <if test="num != null">
+        num,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="totalPrice != null">
+        total_price,
+      </if>
+      <if test="netWeight != null">
+        net_weight,
+      </if>
+      <if test="grossWeight != null">
+        gross_weight,
+      </if>
+      <if test="recipientName != null">
+        recipient_name,
+      </if>
+      <if test="recipientPhone != null">
+        recipient_phone,
+      </if>
+      <if test="recipientAddress != null">
+        recipient_address,
+      </if>
+      <if test="recipientId != null">
+        recipient_id,
+      </if>
+      <if test="orderNum != null">
+        order_num,
+      </if>
+      <if test="expressNum != null">
+        express_num,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="boxNum != null">
+        #{boxNum,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="brand != null">
+        #{brand,jdbcType=VARCHAR},
+      </if>
+      <if test="specs != null">
+        #{specs,jdbcType=VARCHAR},
+      </if>
+      <if test="num != null">
+        #{num,jdbcType=INTEGER},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="totalPrice != null">
+        #{totalPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="netWeight != null">
+        #{netWeight,jdbcType=VARCHAR},
+      </if>
+      <if test="grossWeight != null">
+        #{grossWeight,jdbcType=VARCHAR},
+      </if>
+      <if test="recipientName != null">
+        #{recipientName,jdbcType=VARCHAR},
+      </if>
+      <if test="recipientPhone != null">
+        #{recipientPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="recipientAddress != null">
+        #{recipientAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="recipientId != null">
+        #{recipientId,jdbcType=VARCHAR},
+      </if>
+      <if test="orderNum != null">
+        #{orderNum,jdbcType=VARCHAR},
+      </if>
+      <if test="expressNum != null">
+        #{expressNum,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=SMALLINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cab.bean.entity.order.Order">
+    update t_order
+    <set>
+      <if test="boxNum != null">
+        box_num = #{boxNum,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="brand != null">
+        brand = #{brand,jdbcType=VARCHAR},
+      </if>
+      <if test="specs != null">
+        specs = #{specs,jdbcType=VARCHAR},
+      </if>
+      <if test="num != null">
+        num = #{num,jdbcType=INTEGER},
+      </if>
+      <if test="price != null">
+        price = #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="totalPrice != null">
+        total_price = #{totalPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="netWeight != null">
+        net_weight = #{netWeight,jdbcType=VARCHAR},
+      </if>
+      <if test="grossWeight != null">
+        gross_weight = #{grossWeight,jdbcType=VARCHAR},
+      </if>
+      <if test="recipientName != null">
+        recipient_name = #{recipientName,jdbcType=VARCHAR},
+      </if>
+      <if test="recipientPhone != null">
+        recipient_phone = #{recipientPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="recipientAddress != null">
+        recipient_address = #{recipientAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="recipientId != null">
+        recipient_id = #{recipientId,jdbcType=VARCHAR},
+      </if>
+      <if test="orderNum != null">
+        order_num = #{orderNum,jdbcType=VARCHAR},
+      </if>
+      <if test="expressNum != null">
+        express_num = #{expressNum,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=SMALLINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cab.bean.entity.order.Order">
+    update t_order
+    set box_num = #{boxNum,jdbcType=INTEGER},
+      name = #{name,jdbcType=VARCHAR},
+      brand = #{brand,jdbcType=VARCHAR},
+      specs = #{specs,jdbcType=VARCHAR},
+      num = #{num,jdbcType=INTEGER},
+      price = #{price,jdbcType=DECIMAL},
+      total_price = #{totalPrice,jdbcType=DECIMAL},
+      net_weight = #{netWeight,jdbcType=VARCHAR},
+      gross_weight = #{grossWeight,jdbcType=VARCHAR},
+      recipient_name = #{recipientName,jdbcType=VARCHAR},
+      recipient_phone = #{recipientPhone,jdbcType=VARCHAR},
+      recipient_address = #{recipientAddress,jdbcType=VARCHAR},
+      recipient_id = #{recipientId,jdbcType=VARCHAR},
+      order_num = #{orderNum,jdbcType=VARCHAR},
+      express_num = #{expressNum,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=SMALLINT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
