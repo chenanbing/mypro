@@ -53,5 +53,22 @@ public class TestController {
         return "index";
     }
 
+    @RequestMapping(value = "/scan", method = RequestMethod.GET)
+    public String scan(HttpServletResponse response) throws Exception {
+        return "/print/scan";
+    }
+
+    @RequestMapping(value = "/saveScan")
+    public String saveScan(HttpServletResponse response,String content) throws Exception {
+        System.out.println(content+"---fgfgfg---------------");
+        return "/print/scan";
+    }
+
+    @RequestMapping(value = "/print")
+    public String print(HttpServletResponse response,String content) throws Exception {
+        System.out.println(content+"---fgfgfg---------------");
+        return "/print/scan";
+    }
+
 
 }
