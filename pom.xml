@@ -187,11 +187,13 @@
     </dependency>
 
     <!-- https://mvnrepository.com/artifact/me.dm7.barcodescanner/zxing -->
+    <!-- https://mvnrepository.com/artifact/com.google.zxing/core -->
     <dependency>
-      <groupId>me.dm7.barcodescanner</groupId>
-      <artifactId>zxing</artifactId>
-      <version>1.9.8</version>
+      <groupId>com.google.zxing</groupId>
+      <artifactId>core</artifactId>
+      <version>3.3.2</version>
     </dependency>
+
 
     <dependency>
       <groupId>org.freemarker</groupId>
