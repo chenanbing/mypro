@@ -31,6 +31,11 @@ public class OrderServiceImpl implements OrderService {
     private OrderMapper orderMapper;
 
     @Override
+    public Order getOrderByExpressNum(String expressNum) {
+        return orderMapper.selectByExpressNum(expressNum);
+    }
+
+    @Override
     public int add(Order order) {
         return orderMapper.insertSelective(order);
     }
@@ -72,8 +77,9 @@ public class OrderServiceImpl implements OrderService {
         String barCode = BarCodeUtil.generateBarCode(105,50,order.getExpressNum());
         Map<String, Object> outData = new HashMap<String, Object>();
         outData.put("article", order.getName());
+        outData.put("expressName", order.getExpressNum());
         String doc = DocUtil.html2doc(outData,order.getExpressNum());
-//        PrintUtil.print(doc);
+        PrintUtil.print(doc);
         return 1;
     }
 }

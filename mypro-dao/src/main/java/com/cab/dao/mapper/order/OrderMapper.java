@@ -25,4 +25,6 @@ public interface OrderMapper {
     List<Long> selectIdByModel(Order record);
 
     List<Order> selectByIds(@Param("ids") List<Integer> ids);
+
+    Order selectByExpressNum(String expressNum);
 }

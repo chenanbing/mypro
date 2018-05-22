@@ -36,7 +36,7 @@ public class PrintUtil {
                 fis = new FileInputStream(file);
                 DocAttributeSet das = new HashDocAttributeSet();
                 Doc doc = new SimpleDoc(fis, flavor, das);  //指定打印内容
-//                job.print(doc, pras);
+                job.print(doc, pras);
                 System.out.println(1);
             } catch (Exception e) {
                 e.printStackTrace();

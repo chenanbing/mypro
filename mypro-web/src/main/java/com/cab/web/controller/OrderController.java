@@ -39,6 +39,37 @@ public class OrderController {
         return "order/addOrder";
     }
 
+    @RequestMapping(value = "/importOrderPage")
+    public String importOrderPage(HttpServletResponse response) throws Exception {
+        return "order/importOrder";
+    }
+
+    @RequestMapping(value = "/scanBarCodePage")
+    public String scanBarCodePage(HttpServletResponse response) throws Exception {
+        return "order/scanBarCode";
+    }
+
+
+
+
+
+
+
+
+
+
+    @RequestMapping(value = "/scanBarCode")
+    @ResponseBody
+    public int scanBarCode(HttpServletResponse response, String expressNum) throws Exception {
+        Order order = orderService.getOrderByExpressNum(expressNum);
+        if(order == null){
+            return 0;
+        }
+        PrintRunner printRunner = new PrintRunner(orderService,order);
+        taskExecutor.execute(printRunner);
+        return 1;
+    }
+
     @RequestMapping(value = "/addOrder")
     @ResponseBody
     public int addOrder(HttpServletResponse response, Order order) throws Exception {
@@ -48,9 +79,9 @@ public class OrderController {
 
     @RequestMapping(value = "/getOrderList")
     @ResponseBody
-    public PageWrapper<Order> getOrderList(HttpServletResponse response, Integer page, Integer pageSize) throws Exception {
+    public List<Order> getOrderList(HttpServletResponse response, Integer page, Integer pageSize) throws Exception {
         PageWrapper<Order> pageWrapper = orderService.selectOrderList(new Order(),page,pageSize);
-        return pageWrapper;
+        return pageWrapper.getResult();
     }
 
     @RequestMapping(value = "/printOrder")
@@ -71,7 +102,6 @@ public class OrderController {
             }
             PrintRunner printRunner = new PrintRunner(orderService,order);
             taskExecutor.execute(printRunner);
-            orderService.print(order);
         }
         return 1;
     }
@@ -92,7 +122,8 @@ public class OrderController {
             MultipartFile file = entity.getValue();
             //获取上传文件后缀
             String fileName = file.getOriginalFilename();
-            if (!UploadConfig.isAllow(fileName, file.getSize())) {
+            String suffix = fileName.substring(file.getOriginalFilename().lastIndexOf(".") + 1);
+            if (!UploadConfig.isAllow(suffix, file.getSize())) {
                 return 0;
             }
             if (!ExcelUtil.checkEnd(file.getOriginalFilename())) {
@@ -132,21 +163,21 @@ public class OrderController {
             return null;
         }
         Order order = new Order();
-        order.setBoxNum((int)cellList.get(1));
-        order.setName(cellList.get(2).toString());
-        order.setBrand(cellList.get(3).toString());
-        order.setSpecs(cellList.get(4).toString());
-        order.setNum((int)cellList.get(5));
-        order.setPrice(new BigDecimal(cellList.get(6).toString()));
-        order.setTotalPrice(new BigDecimal(cellList.get(7).toString()));
-        order.setNetWeight(cellList.get(8).toString());
-        order.setGrossWeight(cellList.get(9).toString());
-        order.setRecipientName(cellList.get(10).toString());
-        order.setRecipientPhone(cellList.get(11).toString());
-        order.setRecipientAddress(cellList.get(12).toString());
-        order.setRecipientId(cellList.get(13).toString());
-        order.setOrderNum(cellList.get(14).toString());
-        order.setExpressNum(cellList.get(15).toString());
+        order.setBoxNum(Integer.parseInt(cellList.get(0).toString()));
+        order.setName(cellList.get(1).toString());
+        order.setBrand(cellList.get(2).toString());
+        order.setSpecs(cellList.get(3).toString());
+        order.setNum(Integer.parseInt(cellList.get(4).toString()));
+        order.setPrice(new BigDecimal(cellList.get(5).toString()));
+        order.setTotalPrice(new BigDecimal(cellList.get(6).toString()));
+        order.setNetWeight(cellList.get(7).toString());
+        order.setGrossWeight(cellList.get(8).toString());
+        order.setRecipientName(cellList.get(9).toString());
+        order.setRecipientPhone(cellList.get(10).toString());
+        order.setRecipientAddress(cellList.get(11).toString());
+        order.setRecipientId(cellList.get(12).toString());
+        order.setOrderNum(cellList.get(13).toString());
+        order.setExpressNum(cellList.get(14).toString());
         order.setCreateTime(new Date());
         order.setUpdateTime(new Date());
         return order;

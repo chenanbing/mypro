@@ -60,9 +60,9 @@ public class BarCodeUtil {
         HashMap<EncodeHintType, String> hints = new HashMap<>();
         hints.put(EncodeHintType.CHARACTER_SET, "utf-8");
         BitMatrix bm = new MultiFormatWriter().encode(text,
-                BarcodeFormat.EAN_13, width, height, hints);
+                BarcodeFormat.CODE_128, width, height, hints);
         // 生成条形码图片
-        String outFilePath = "D:\\myworkspace\\mypro-parent\\mypro-web\\src\\main\\webapp\\template\\generator\\barcode";
+        String outFilePath = "H:\\development\\ideaworkspace\\mypro\\mypro-web\\src\\main\\webapp\\template\\generator\\barcode";
         String outFile = outFilePath+"\\"+text+".png";
         File out = new File(outFile);
         BarCodeUtil.writeBitMatricToFile(bm, format, out);

@@ -16,14 +16,14 @@ public class DocUtil {
 
     public static String html2doc(Map<String, Object> outData ,String id) throws Exception {
         List<String> result = new ArrayList<>();
-        String templatePath = "D:\\myworkspace\\mypro-parent\\mypro-web\\src\\main\\webapp\\template";
+        String templatePath = "H:\\development\\ideaworkspace\\mypro\\mypro-web\\src\\main\\webapp\\template";
         String templateName = "fiction.html";
-        String outFilePath = "D:\\myworkspace\\mypro-parent\\mypro-web\\src\\main\\webapp\\template\\generator\\html";
+        String outFilePath = "H:\\development\\ideaworkspace\\mypro\\mypro-web\\src\\main\\webapp\\template\\generator\\html";
         String outFileName = id + ".html"; //生成的文件名
 
         FileInputStream fileInputStream = generateHtml(templatePath,templateName,outFilePath, outFileName, outData);
 
-        String outFileDoc = "D:/myworkspace/mypro-parent/mypro-web/src/main/webapp/template/generator/doc/"+id+".doc";
+        String outFileDoc = "H:\\development\\ideaworkspace\\mypro\\mypro-web\\src\\main\\webapp\\template\\generator\\doc\\"+id+".doc";
         OutputStream os = new FileOutputStream(outFileDoc);
         POIFSFileSystem fs = new POIFSFileSystem();
         //对应于org.apache.poi.hdf.extractor.WordDocument

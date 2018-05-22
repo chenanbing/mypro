@@ -9,6 +9,9 @@ import java.util.List;
  * Created by Administrator on 2018/5/22 0022.
  */
 public interface OrderService {
+
+    public Order getOrderByExpressNum(String expressNum);
+
     public int add(Order order);
 
     public int addBatch(List<Order> orders);
