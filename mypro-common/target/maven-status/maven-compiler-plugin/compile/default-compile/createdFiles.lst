@@ -1,4 +1,6 @@
 com\cab\common\framework\exception\MyExceptionHandler.class
 com\cab\common\framework\exception\ServiceException.class
 com\cab\common\framework\exception\ControllerException.class
+com\cab\common\framework\utils\ExcelUtil.class
+com\cab\common\framework\enums\UploadConfig.class
 com\cab\common\framework\config\MyPropertiesFactoryBean.class

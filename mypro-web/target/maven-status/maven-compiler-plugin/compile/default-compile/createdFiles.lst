@@ -5,6 +5,7 @@ com\lmit\app\barcode\BarcodeProducter$1.class
 com\lmit\app\barcode\BarcodeBuffer.class
 com\lmit\app\barcode\ScanBarcodeListener.class
 com\test\barcode\WriteBitMatricToFile.class
+com\cab\web\controller\OrderController.class
 com\lmit\app\barcode\BarcodeProducter.class
 com\lmit\app\barcode\BarcodeProducter$2.class
 com\test\template\TemplateUtil.class

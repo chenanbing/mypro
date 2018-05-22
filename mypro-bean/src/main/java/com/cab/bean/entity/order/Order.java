@@ -34,13 +34,17 @@ public class Order {
 
     private String orderNum;
 
+    private Short status;
+
+    private Integer expressId;
+
+    private String expressName;
+
     private String expressNum;
 
     private Date createTime;
 
     private Date updateTime;
-
-    private Short status;
 
     public Integer getId() {
         return id;
@@ -162,6 +166,30 @@ public class Order {
         this.orderNum = orderNum == null ? null : orderNum.trim();
     }
 
+    public Short getStatus() {
+        return status;
+    }
+
+    public void setStatus(Short status) {
+        this.status = status;
+    }
+
+    public Integer getExpressId() {
+        return expressId;
+    }
+
+    public void setExpressId(Integer expressId) {
+        this.expressId = expressId;
+    }
+
+    public String getExpressName() {
+        return expressName;
+    }
+
+    public void setExpressName(String expressName) {
+        this.expressName = expressName == null ? null : expressName.trim();
+    }
+
     public String getExpressNum() {
         return expressNum;
     }
@@ -184,13 +212,5 @@ public class Order {
 
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
-    }
-
-    public Short getStatus() {
-        return status;
-    }
-
-    public void setStatus(Short status) {
-        this.status = status;
     }
 }

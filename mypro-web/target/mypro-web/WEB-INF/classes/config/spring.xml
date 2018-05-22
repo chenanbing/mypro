@@ -11,6 +11,7 @@
 
     <import resource="redis-config.xml"/>
     <import resource="datasource.xml"/>
+    <import resource="crontab-task.xml"/>
     <!-- dubbo service -->
 
     <bean id="configProperties"

@@ -1,1 +1,2 @@
-com\cab\dao\mapper\domains\DomainsMapper.class
+com\cab\dao\mapper\test\TestMapper.class
+com\cab\dao\mapper\order\OrderMapper.class
