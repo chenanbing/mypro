@@ -2,4 +2,9 @@
 
 *iml
 .idea/*
-
+mypro-bean/target/*
+mypro-common/target/*
+mypro-dao/target/*
+mypro-service/target/*
+mypro-service-interface/target/*
+mypro-web/target/*
