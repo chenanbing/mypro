@@ -346,6 +346,9 @@
     <if test="id != null">
       and id = #{id,jdbcType=INTEGER}
     </if>
+    <if test="expressNum != null and expressNum != ''">
+      and express_num = #{expressNum,jdbcType=VARCHAR}
+    </if>
   </sql>
 
 

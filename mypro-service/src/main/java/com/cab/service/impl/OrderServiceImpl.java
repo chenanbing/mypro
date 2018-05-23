@@ -1,18 +1,14 @@
 package com.cab.service.impl;
 
 import com.cab.bean.entity.order.Order;
-import com.cab.bean.entity.test.Test;
-import com.cab.bean.view.PageWrapper;
+import com.cab.bean.view.PageBean;
 import com.cab.common.framework.utils.BarCodeUtil;
 import com.cab.common.framework.utils.DocUtil;
 import com.cab.common.framework.utils.PrintUtil;
 import com.cab.dao.mapper.order.OrderMapper;
-import com.cab.dao.mapper.test.TestMapper;
 import com.cab.service.OrderService;
-import com.cab.service.TestService;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
-import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -46,27 +42,27 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public PageWrapper<Order> selectOrderList(Order order, Integer page, Integer pageSize) {
-        PageWrapper<Order> pageWrapper = new PageWrapper<Order>();
+    public PageBean<Order> selectScanOrderList(Order order, Integer page, Integer pageSize) {
+        PageBean<Order> pageBean = new PageBean<Order>();
         Page<Order> pageInfo = null;
         if (page != null && page.intValue() > 0 && pageSize != null && pageSize.intValue() > 0) {
             pageInfo = PageHelper.startPage(page, pageSize, true);
         }
         List<Order> list = orderMapper.selectByModel(order);//
         if (pageInfo == null) {
-            pageWrapper.setResult(list);
-            return pageWrapper;
+            pageBean.setRows(list);
+            return pageBean;
         } else {
             if(page > pageInfo.getPages()){
-                return pageWrapper;
+                return pageBean;
             }
-            pageWrapper.setPageCount(pageInfo.getPages());
-            pageWrapper.setPageNo(pageInfo.getPageNum());
-            pageWrapper.setPageSize(pageInfo.getPageSize());
-            pageWrapper.setTotalCount(pageInfo.getTotal());
-            pageWrapper.setResult(list);
+            pageBean.setPageCount(pageInfo.getPages());
+            pageBean.setCurrentPage(pageInfo.getPageNum());
+            pageBean.setPageSize(pageInfo.getPageSize());
+            pageBean.setTotal(pageInfo.getTotal());
+            pageBean.setRows(list);
         }
-        return pageWrapper;
+        return pageBean;
     }
 
     public List<Order> selectOrderList(List<Integer> ids){

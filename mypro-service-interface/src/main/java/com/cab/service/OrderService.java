@@ -1,7 +1,7 @@
 package com.cab.service;
 
 import com.cab.bean.entity.order.Order;
-import com.cab.bean.view.PageWrapper;
+import com.cab.bean.view.PageBean;
 
 import java.util.List;
 
@@ -16,7 +16,7 @@ public interface OrderService {
 
     public int addBatch(List<Order> orders);
 
-    public PageWrapper<Order> selectOrderList(Order order, Integer page, Integer pageSize);
+    public PageBean<Order> selectScanOrderList(Order order, Integer page, Integer pageSize);
 
     public List<Order> selectOrderList(List<Integer> ids);
 

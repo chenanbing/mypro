@@ -32,8 +32,8 @@
 
 <body>
 <div class="easyui-panel" title="New Topic" style="width:100%;padding:30px 60px;">
-    <a href="${pageContext.request.contextPath}/order/importOrderPage">导入exel</a>
-    <a href="${pageContext.request.contextPath}/order/scanBarCodePage">扫描条形码</a>
+    <a href="${pageContext.request.contextPath}/order/importPrintOrderPage">上传excel打印</a>
+    <a href="${pageContext.request.contextPath}/order/scanIndexPage">扫描条形码打印</a>
 </div>
 
 </body>

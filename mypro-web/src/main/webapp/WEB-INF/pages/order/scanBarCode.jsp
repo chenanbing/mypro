@@ -53,6 +53,10 @@
         <input type="text" id="p" name="expressNum"
                onkeydown="return SubmitKeyClick(this,event)" onblur="return b1()"/> <input
             type="submit" onclick="return b1()" value="开始录入"/>
+
+        <br/>
+        <a href="${pageContext.request.contextPath}/order/scanIndexPage">返回上一页</a>
+        <a href="${pageContext.request.contextPath}/order/importScanOrderPage">查看源数据</a>
     </form>
 </div>
 
